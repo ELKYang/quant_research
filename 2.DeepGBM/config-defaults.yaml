@@ -1,0 +1,86 @@
+# wandb parameters config file
+
+# data parameters
+model:
+  desc: Model selection
+  value: "gbdt_offline"
+data_dir:
+  desc: The location of the data file(first term) and label file(second term).
+  value:
+    - "/home/yangfan/data/basic_features.hdf5"
+    - "/home/yangfan/data/labels_1.hdf5"
+batches:
+  value: 6
+
+# LightGBM parameters
+num_trees:
+  desc: The number of trees in lightgbm.
+  value: 500
+num_leaves:
+  desc: Max number of leaves in each tree.
+  value: 128
+tree_lr:
+  desc: The learning rate of lightgbm.
+  value: 0.015
+feature_fraction:
+  value: 0.8
+bagging_freq:
+  value: 3
+bagging_fraction:
+  value: 0.8
+num_threads:
+  value: 8
+
+# SubGBDTLeaf parameters
+num_slices:
+  desc: Group numbers.
+  value: 100
+feature_per_group:
+  value: 128
+
+# Embedding GBDT parameters
+embedding_size:
+  value: 256
+embedding_lr:
+  value: !!float 3e-4
+batch_size:
+  value: 2048
+test_batch_size:
+  value: 2048
+embedding_epochs:
+  value: 20
+embedding_lr_milestone:
+  value: 10
+
+# train parameters
+loss_init:
+  value: 1.0
+loss_dr:
+  value: 0.7
+loss_de:
+  value: 2
+log_freq:
+  value: 2
+weight_decay:
+  value: !!float 1e-5
+seed:
+  value: 2022
+
+# GBDT2NN parameters
+epochs:
+  value: 35
+lr:
+  value: !!float 3e-4
+lr_milestone:
+  value: 10
+tree_layers:
+  value:
+    - 512
+    - 512
+    - 256
+offline:
+  value: !!bool False
+online_epochs:
+  value: 10
+online_batch_size:
+  value: 2048

@@ -1,0 +1,80 @@
+# wandb parameters config file
+# model parameters
+C:
+  desc: Dimension of the input data (named C in paper).
+  value: 913
+H:
+  desc: Dimensions of the feature and other hidden variables (named H in paper).
+  value: 512
+M:
+  desc: Number of decoder_layers.
+  value: 4
+K:
+  desc: The dimensions of the mean and variance of the prior and posterior distribution.
+  value: 128
+gamma:
+  desc: Gamma is the weight of KLD loss.
+  value: !!float 1e-4
+alpha:
+  desc: Alpha is the weight of rank aware loss.
+  value: 0.0
+# train parameters
+seed:
+  desc: Global seed.
+  value: 2022
+max_epochs:
+  desc: Max training epochs.
+  value: 100
+optim:
+  desc: Optimizer selection
+  value: "Adam"
+use_nesterov:
+  desc: Only used in sgd optimizer
+  value: !!bool True
+momentum:
+  desc: Only used in sgd optimizer
+  value: !!float 0.9
+lr:
+  desc: Initial learning rate
+  value: !!float 3e-4
+lr_min:
+  desc: Min learning rate
+  value: !!float 3e-6
+milestones:
+  desc: Milestones for multistep lr decay
+  value:
+    - 15
+weight_decay:
+  desc: L2 weight decay
+  value: !!float 1e-4
+# data parameters
+data_dir:
+  desc: The location of the data file(first term) and label file(second term).
+  value:
+    - "/home/yangfan/data/basic_features.hdf5"
+    - "/home/yangfan/data/labels_1.hdf5"
+batch_size:
+  value: 4096
+num_workers:
+  value: 8
+train_date:
+  desc: The start and end date of the train data.
+  value:
+    - 20190102
+    - 20201231
+val_date:
+  desc: The start and end date of the validation data.
+  value:
+    - 20210101
+    - 20211231
+test_date:
+  desc: The start and end date of the test data.
+  value:
+    - 20220101
+    - 20220819
+step_len:
+  desc: Time length
+  value: 10
+col_filter_path:
+  desc: path to feature filter
+  value: null
